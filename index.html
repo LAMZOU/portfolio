@@ -5,7 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zounouyavé LAMIEN — Contrôleur de Gestion · Économiste · Ingénieur Financier</title>
 <meta name="description" content="Portfolio professionnel de Zounouyavé LAMIEN — Docteur en économie appliquée, Contrôleur de gestion, spécialiste banque-finance et IA.">
+
+<!-- ===== PROTECTION : désactiver le cache et indexation partielle ===== -->
+<meta name="robots" content="noarchive, nosnippet">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<!-- ===== PROTECTION CSS : empêcher la sélection et le glisser-déposer ===== -->
 <style>
   :root{
     --navy:#0a2342;
@@ -20,6 +26,70 @@
     --border:#e5e7eb;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
+
+  /* ===== PROTECTION ANTI-COPIE / ANTI-SÉLECTION ===== */
+  html, body{
+    -webkit-user-select: none;   /* Safari */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* IE/Edge */
+    user-select: none;           /* Standard */
+    -webkit-touch-callout: none; /* iOS : désactive le menu contextuel long press */
+  }
+  /* Autoriser la sélection uniquement dans les champs de saisie (s'il y en a un jour) */
+  input, textarea{
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+  /* Empêcher le glisser-déposer des images */
+  img{
+    -webkit-user-drag: none;
+    user-drag: none;
+    pointer-events: none; /* optionnel : empêche aussi le clic droit sur les images */
+  }
+  /* Petit bandeau d'avertissement discret si l'utilisateur tente de copier */
+  #copy-warning{
+    position:fixed;
+    bottom:-100px;
+    left:50%;
+    transform:translateX(-50%);
+    background:var(--navy-deep);
+    color:var(--white);
+    padding:.8rem 1.5rem;
+    border-radius:50px;
+    font-size:.85rem;
+    font-family:'Poppins',sans-serif;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+    border:1px solid var(--gold);
+    z-index:9999;
+    transition:bottom .4s ease;
+    pointer-events:none;
+  }
+  #copy-warning.show{bottom:30px;}
+
+  /* ===== PROTECTION IMPRESSION ===== */
+  @media print{
+    body *{display:none !important; visibility:hidden !important;}
+    body::before{
+      content:"⚠️ L'impression de ce document est désactivée. Contactez Zounouyavé LAMIEN pour obtenir une version PDF.";
+      display:block !important;
+      visibility:visible !important;
+      font-family:'Poppins',sans-serif;
+      font-size:1.2rem;
+      text-align:center;
+      padding:3rem;
+      color:#0a2342;
+    }
+    html, body{
+      display:block !important;
+      visibility:visible !important;
+    }
+  }
+</style>
+
+<!-- ===== STYLE PRINCIPAL (identique à votre version) ===== -->
+<style>
   html{scroll-behavior:smooth;}
   body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;}
   h1,h2,h3{font-family:'Playfair Display',serif;}
@@ -240,11 +310,7 @@
 
   /* ===== RESPONSIVE ===== */
   @media(max-width:900px){
-    .hero-grid{
-      grid-template-columns:1fr;
-      gap:2rem;
-      text-align:center;
-    }
+    .hero-grid{grid-template-columns:1fr;gap:2rem;text-align:center;}
     header .content{text-align:center;}
     header .quote{margin:0 auto 2rem;text-align:left;}
     .btns{justify-content:center;}
@@ -266,30 +332,29 @@
 </head>
 <body>
 
+<!-- ===== BANDEAU D'AVERTISSEMENT COPIE ===== -->
+<div id="copy-warning">⚠️ La copie de ce contenu est désactivée.</div>
+
 <!-- ===== NAVBAR ===== -->
 <nav>
-  <div class="logo">ZounouMath</div>
+  <div class="logo">Z. LAMIEN</div>
   <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
   <ul>
-    <li><a href="#about" onclick="document.querySelector('nav ul').classList.remove('open')">À propos</a></li>
-    <li><a href="#formation" onclick="document.querySelector('nav ul').classList.remove('open')">Formation</a></li>
-    <li><a href="#experience" onclick="document.querySelector('nav ul').classList.remove('open')">Expérience</a></li>
-    <li><a href="#skills" onclick="document.querySelector('nav ul').classList.remove('open')">Compétences</a></li>
-    <li><a href="#projets" onclick="document.querySelector('nav ul').classList.remove('open')">Projets & Recherche</a></li>
-    <li><a href="#contact" onclick="document.querySelector('nav ul').classList.remove('open')">Contact</a></li>
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#formation">Formation</a></li>
+    <li><a href="#experience">Expérience</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#projets">Projets & Recherche</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <!-- ===== HERO ===== -->
 <header>
   <div class="hero-grid">
-
-    <!-- PHOTO À GAUCHE -->
     <div class="hero-photo">
       <img src="photo.png" alt="Photo professionnelle de Zounouyavé LAMIEN">
     </div>
-
-    <!-- TEXTE À DROITE -->
     <div class="content">
       <span class="tag">Portfolio Professionnel</span>
       <h1>Zounouyavé <span>LAMIEN</span></h1>
@@ -301,7 +366,6 @@
         <a href="#contact" class="btn btn-primary">📩 Me contacter</a>
       </div>
     </div>
-
   </div>
 </header>
 
@@ -385,6 +449,7 @@
     </div>
   </div>
 </section>
+
 <!-- ===== EXPERIENCE ===== -->
 <section id="experience">
   <div class="section-title reveal">
@@ -484,7 +549,6 @@
 
   </div>
 
-  <!-- Certifications + Langues -->
   <div class="duo-grid">
     <div class="skill-box reveal">
       <h3><span class="icon">🎓</span> Certifications</h3>
@@ -582,24 +646,118 @@
   © 2026 <span>Zounouyavé LAMIEN</span> — Portfolio professionnel · Ouagadougou, Burkina Faso
 </footer>
 
-<!-- ===== SCRIPT ANIMATIONS ===== -->
+<!-- ===== SCRIPT : PROTECTION + ANIMATIONS ===== -->
 <script>
-  // Animation d'apparition au scroll
+(function() {
+  "use strict";
+
+  // -------- 1. Bandeau d'avertissement --------
+  const warning = document.getElementById('copy-warning');
+  let warningTimer = null;
+  function showWarning(msg) {
+    if (msg) warning.textContent = msg;
+    warning.classList.add('show');
+    clearTimeout(warningTimer);
+    warningTimer = setTimeout(() => warning.classList.remove('show'), 2000);
+  }
+
+  // -------- 2. Désactiver le clic droit (menu contextuel) --------
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    showWarning("⚠️ Le clic droit est désactivé sur ce site.");
+    return false;
+  });
+
+  // -------- 3. Désactiver la sélection de texte --------
+  document.addEventListener('selectstart', function(e) {
+    // Autoriser la sélection dans les champs de saisie
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return true;
+    e.preventDefault();
+    return false;
+  });
+
+  // -------- 4. Désactiver la copie / coupe --------
+  document.addEventListener('copy', function(e) {
+    if (window.getSelection().toString().length > 0) {
+      e.preventDefault();
+      e.clipboardData.setData('text/plain',
+        '© Zounouyavé LAMIEN — Contenu protégé. Toute reproduction est interdite sans autorisation.');
+      showWarning("⚠️ La copie de ce contenu est désactivée.");
+      return false;
+    }
+  });
+  document.addEventListener('cut', function(e) {
+    e.preventDefault();
+    showWarning("⚠️ La copie de ce contenu est désactivée.");
+    return false;
+  });
+
+  // -------- 5. Bloquer les raccourcis clavier (Ctrl/Cmd + C, X, A, P, S, U) --------
+  document.addEventListener('keydown', function(e) {
+    const key = (e.key || '').toLowerCase();
+    const ctrl = e.ctrlKey || e.metaKey;
+
+    // Ctrl/Cmd + C, X, A (copier, couper, tout sélectionner)
+    if (ctrl && ['c','x','a'].includes(key)) {
+      e.preventDefault();
+      showWarning("⚠️ La copie de ce contenu est désactivée.");
+      return false;
+    }
+    // Ctrl/Cmd + P (imprimer) et Ctrl/Cmd + S (enregistrer)
+    if (ctrl && ['p','s'].includes(key)) {
+      e.preventDefault();
+      showWarning("⚠️ L'impression et l'enregistrement sont désactivés.");
+      return false;
+    }
+    // Ctrl/Cmd + U (voir le code source)
+    if (ctrl && key === 'u') {
+      e.preventDefault();
+      showWarning("⚠️ L'accès au code source est désactivé.");
+      return false;
+    }
+    // F12 (outils de développement) — dissuasif, ne fonctionne pas sur tous les navigateurs
+    if (key === 'f12') {
+      e.preventDefault();
+      showWarning("⚠️ Les outils de développement sont désactivés.");
+      return false;
+    }
+  });
+
+  // -------- 6. Désactiver l'impression (Ctrl+P bloqué ci-dessus + ceinture-bretelles) --------
+  window.addEventListener('beforeprint', function(e) {
+    // On laisse le CSS @media print afficher le message d'avertissement
+    showWarning("⚠️ L'impression est désactivée.");
+  });
+
+  // -------- 7. Bloquer le glisser-déposer des images --------
+  document.addEventListener('dragstart', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // -------- 8. Empêcher le copier-coller via le menu mobile (long press) --------
+  document.addEventListener('touchstart', function(e) {
+    // Le CSS -webkit-touch-callout:none fait déjà l'essentiel
+  }, { passive: true });
+
+  // -------- 9. Animations d'apparition au scroll --------
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+      if (entry.isIntersecting) entry.target.classList.add('visible');
     });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Fermer le menu mobile au clic sur un lien
+  // -------- 10. Fermer le menu mobile au clic sur un lien --------
   document.querySelectorAll('nav ul a').forEach(a => {
     a.addEventListener('click', () => {
       document.querySelector('nav ul').classList.remove('open');
     });
   });
+
+})();
 </script>
 
 </body>
